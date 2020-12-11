@@ -2,17 +2,30 @@ plugins {
     id 'application'
 }
 
+group = 'org.jianzhao.interpreter'
+
+sourceCompatibility = '15'
+targetCompatibility = '15'
+
 repositories {
-    jcenter()
+    mavenCentral()
+}
+
+java {
+    modularity.inferModulePath = true
 }
 
 dependencies {
+    // javascript
+    implementation 'org.graalvm.js:js:20.3.0'
+    implementation 'org.graalvm.js:js-scriptengine:20.3.0'
+    // testing
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 }
 
 application {
-    mainClass = 'org.jianzhao.App'
+    mainClass = 'org.jianzhao.interpreter.App'
 }
 
 tasks.named('test') {
